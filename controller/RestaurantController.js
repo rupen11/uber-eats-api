@@ -17,8 +17,22 @@ module.exports.addrestaurant = async (req, res) => {
 
 module.exports.restaurant = async (req, res) => {
     try {
-        console.log("call");
-        const restaurants = await Restaurants.find();
+        let restaurants;
+
+        if (req.query.city) {
+            restaurants = await Restaurants.find({
+                city: req.query.city,
+            });
+
+            if (restaurants.length === 0) {
+                return res.status(404).json({
+                    success: false,
+                    message: "No Restaurant are available for this city",
+                });
+            }
+        } else {
+            restaurants = await Restaurants.find();
+        }
 
         return res.status(200).json({
             success: true,
