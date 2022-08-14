@@ -11,7 +11,7 @@ module.exports.addrestaurant = async (req, res) => {
             message: "Restaurants created successfully.",
         });
     } catch (error) {
-        return res.status(404).json(error);
+        return res.status(404).json({ success: false, message: error });
     }
 };
 
@@ -39,6 +39,6 @@ module.exports.restaurant = async (req, res) => {
             restaurants,
         });
     } catch (error) {
-        return res.status(404).json(error);
+        return res.status(404).json({ success: false, messsage: error });
     }
 };

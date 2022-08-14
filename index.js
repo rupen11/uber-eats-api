@@ -1,13 +1,15 @@
 const express = require("express");
 const cors = require("cors");
 const RestaurantRouter = require("./router/RestaurantRouter");
+const MenuitemsRouter = require("./router/MenuitemsRouter");
 
 const app = express();
 const port = process.env.PORT || 8000;
 
+require("./db/db");
 app.use(cors());
 app.use(express.json());
-require("./db/db");
+app.use("/api/menuitems", MenuitemsRouter);
 app.use("/api/restaurants", RestaurantRouter);
 
 app.get("/", (req, res) => {
