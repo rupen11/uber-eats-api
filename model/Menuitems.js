@@ -11,7 +11,7 @@ const MenuSchema = new mongoose.Schema({
         required: true,
         default: "",
     },
-    name: {
+    title: {
         type: String,
         required: true,
     },
