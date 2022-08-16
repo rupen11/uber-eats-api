@@ -23,8 +23,8 @@ module.exports.getmenuitems = async (req, res) => {
 
         if (menuitems.length === 0)
             return res
-                .status(202)
-                .json({ success: true, message: "No Menuitems found" });
+                .status(404)
+                .json({ success: false, message: "No Menuitems found" });
 
         return res.status(200).json({ success: true, message: menuitems });
     } catch (error) {
