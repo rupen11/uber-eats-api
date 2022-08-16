@@ -31,6 +31,10 @@ const RestaurantSchema = new mongoose.Schema({
         type: Array,
         required: true,
     },
+    servicetype: {
+        type: Array,
+        required: true,
+    },
 });
 
 module.exports = mongoose.model("Restaurants", RestaurantSchema);
